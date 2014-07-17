@@ -8,11 +8,8 @@ import java.net.Socket;
 
 public class RBIProtocol {
 
-    public static final String EOM = "<[?!EOM!?]>";
-    
-    public static void main(String[] args) {
-                
-    }
+    public static final String EOM = "<[?!EOM!?]>\n";
+    public static final int PORT = 1234;
 
     public static String readMessage (Socket socket) {      
         try {
@@ -24,7 +21,7 @@ public class RBIProtocol {
             }
             return message.toString();
         } catch (IOException e) {            
-            System.out.println("Can't read!");
+            System.out.println("Error!");
                 System.out.println(e.getMessage());
         }
         return null;
@@ -34,6 +31,7 @@ public class RBIProtocol {
         try {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             out.print(message);
+            out.print("\n");
             out.print(EOM);
         } catch (IOException e) {
             e.printStackTrace();
