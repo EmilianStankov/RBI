@@ -16,7 +16,7 @@ public class RBIProtocol {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             StringBuilder message = new StringBuilder();
             String line;
-            while(!((line = in.readLine()).equals(EOM))) {
+            while(!((line = in.readLine()).contains(EOM))) {
                 message.append(line);
             }
             return message.toString();
@@ -35,6 +35,7 @@ public class RBIProtocol {
             out.print(EOM);
         } catch (IOException e) {
             e.printStackTrace();
+            
         } 
     }
 }
