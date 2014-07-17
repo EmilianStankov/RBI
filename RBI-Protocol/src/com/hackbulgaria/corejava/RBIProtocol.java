@@ -30,10 +30,9 @@ public class RBIProtocol {
     public static void writeMessage(Socket socket, String message) {
         try {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.print(message);
-            out.print("\n");
-            out.print(EOM);
-            out.print("\n");
+            out.println(message);
+            out.println(EOM);
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
 
