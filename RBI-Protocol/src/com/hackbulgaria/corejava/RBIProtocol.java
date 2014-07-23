@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.file.Path;
 
 public class RBIProtocol {
 
     public static final String EOM = "<[?!EOM!?]>";
+    public static final String FILE = "<[?!FILE!?]>";
     public static final int PORT = 1234;
 
     public static String readMessage(Socket socket) {
@@ -37,5 +39,14 @@ public class RBIProtocol {
             e.printStackTrace();
 
         }
+    }
+    
+    public static byte[] readFile(Socket socket) {
+        
+        return null;
+    }
+    
+    public static void writeFile(Socket socket, Path path) {
+        
     }
 }
